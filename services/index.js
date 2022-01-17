@@ -69,7 +69,18 @@ export const getSimilarPosts = async () => {
           AND: { categories_some: { slug_in: $categories } }
           last: 3
         }
-      )
+      ) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
     }
   `;
+
+  const result = await request(graphQlAPI, query);
+
+  return result.postsConnection.edges;
 };
