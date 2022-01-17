@@ -37,3 +37,25 @@ export const getPosts = async () => {
 
   return result.postsConnection.edges;
 };
+
+export const getRecentPosts = async () => {
+  const query = gql`
+    query getPostDetails() {
+      posts(
+        orderBy: createdAt_ASC 
+        last: 3
+      ) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+
+  const result = await request(graphQlAPI, query);
+
+  return result.postsConnection.edges;
+};
