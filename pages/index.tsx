@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import Head from "next/head";
 import { PostCard, Categories, PostWidget } from "../components";
+import { getPosts } from '../services'
 
 const posts = [
   { title: "React Testing", excerpt: "Learn React Testing!" },
@@ -29,4 +30,8 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
 }
