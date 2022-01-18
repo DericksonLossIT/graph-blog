@@ -19,7 +19,6 @@ const PostDetails = ({ post }) => {
   if (router.isFallback) {
     return <Loader />;
   }
-  console.log("post param: ", post);
 
   return (
     <>
@@ -60,7 +59,6 @@ export async function getStaticProps({ params }) {
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
   const posts = await getPosts();
-  console.log("getStaticPaths: ", posts)
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
     fallback: true,
