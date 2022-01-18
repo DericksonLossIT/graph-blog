@@ -4,7 +4,7 @@ This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](
 
 ## Preview
 
-Preview the example live on [here](https://graph-blog-ky5421czd-dericksonlossit.vercel.app/)
+Preview the example live [here](https://graph-blog-ky5421czd-dericksonlossit.vercel.app/)
 
 ## Deploy your own
 
