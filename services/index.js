@@ -34,7 +34,6 @@ export const getPosts = async () => {
   `;
 
   const result = await request(graphQlAPI, query);
-
   return result.postsConnection.edges;
 };
 
@@ -57,7 +56,7 @@ export const getRecentPosts = async () => {
 
   const result = await request(graphQlAPI, query);
 
-  return result.postsConnection.edges;
+  return result.posts;
 };
 
 export const getSimilarPosts = async () => {
@@ -67,8 +66,9 @@ export const getSimilarPosts = async () => {
         where: {
           slug_not: $slug
           AND: { categories_some: { slug_in: $categories } }
-          last: 3
+
         }
+        last: 3
       ) {
         title
         featuredImage {
