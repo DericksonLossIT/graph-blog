@@ -66,7 +66,6 @@ export const getSimilarPosts = async () => {
         where: {
           slug_not: $slug
           AND: { categories_some: { slug_in: $categories } }
-
         }
         last: 3
       ) {
@@ -83,4 +82,19 @@ export const getSimilarPosts = async () => {
   const result = await request(graphQlAPI, query);
 
   return result.postsConnection.edges;
+};
+
+export const getCategories = async () => {
+  const query = gql`
+    query GetCategories {
+      categories {
+        name
+        slug
+      }
+    }
+  `;
+
+  const result = await request(graphQlAPI, query);
+
+  return result.categories;
 };
